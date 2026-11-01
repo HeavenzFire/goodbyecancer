@@ -6,33 +6,6 @@
   "dataset_selection_policy": "Prefer public human PDAC organoid or cell-model data with explicit treatment labels, stable accession identifiers, and downloadable processed data. Do not infer treatment outcomes from expression data alone.",
   "datasets": [
     {
-      "accession": "GSE235548",
-      "title": "Uncovering the hidden threat: single-organoid analysis reveals clinically relevant treatment-resistant and invasive subclones in pancreatic cancer",
-      "role": "primary organoid response and heterogeneity dataset",
-      "organism": "Homo sapiens",
-      "public_status": "Public GEO series",
-      "sample_count_reported": 30,
-      "design": "PDAC patient-derived organoid panel (8 organoid lines); baseline samples and a subset exposed to gemcitabine plus paclitaxel; study includes single-organoid response and invasive/resistant subclone analysis.",
-      "data_types": [
-        "bulk RNA-seq",
-        "organoid treatment-response measurements",
-        "single-organoid image-analysis-derived response metrics"
-      ],
-      "available_data": "GEO supplementary processed files and SRA raw sequencing data; inspect sample-level metadata before assigning groups.",
-      "limitations": [
-        "Small number of patient-derived organoid lines",
-        "Treated samples are a subset of the panel",
-        "Expression data alone do not encode a calibrated dose-response curve",
-        "Do not treat organoid response as patient treatment advice"
-      ],
-      "source_url": "https://www.ncbi.nlm.nih.gov/geo/query/acc.cgi?acc=GSE235548",
-      "sample_metadata_url": "https://www.ncbi.nlm.nih.gov/geo/query/acc.cgi?acc=GSM7505081",
-      "geo_sample_composition": "23 baseline organoid RNA-seq samples and 7 Gemcitabine+Paclitaxel-treated samples; 8 patient-derived organoid lines overall. Verify all GSM-to-line and replicate mappings from SOFT/MINiML before analysis.",
-      "geo_response_endpoint": "No complete longitudinal growth/dose-response matrix is established by the GEO series record. GEO provides processed RNA-seq count files; the study reports live-cell image-derived response metrics and retrospective clinical comparison that must be extracted from the publication supplements with sample linkage.",
-      "sample_metadata_audit": "series-level search result and representative GSM metadata checked; full 30-sample mapping pending",
-      "model_eligibility": "candidate for response-heterogeneity analysis only after publication response tables and GSM mappings are extracted; do not train a transcriptome predictor on 8 lines"
-    },
-    {
       "accession": "GSE169321",
       "title": "Patient-derived organoids after neoadjuvant FOLFIRINOX predict therapy resistance in pancreatic ductal adenocarcinoma",
       "role": "independent organoid and treatment-context dataset",
@@ -79,6 +52,85 @@
       "geo_response_endpoint": "single-cell transcriptomic profiles; not a patient-derived organoid drug-response cohort",
       "sample_metadata_audit": "series-level GEO metadata checked",
       "model_eligibility": "mechanistic resistance stress-test only; exclude from patient-derived organoid calibration"
+    },
+    {
+      "accession": "GSE197613",
+      "title": "Multi-omics analyses of changes in the tumor microenvironment of pancreatic adenocarcinoma following neoadjuvant treatment with anti-PD-1 antibody",
+      "role": "immune-microenvironment and immunotherapy-context dataset",
+      "organism": "Homo sapiens",
+      "public_status": "Public GEO transcriptomic series; associated exome data in dbGaP",
+      "sample_count_reported": 91,
+      "design": "Transcriptomic samples from a neoadjuvant clinical platform study of GVAX vaccine with or without nivolumab (anti-PD-1), including immune-cell-enriched profiles and paired pre/post-treatment tumor context. GEO reports 91 samples; this is a sample count, not a patient count.",
+      "data_types": [
+        "processed RNA-seq count matrices",
+        "normalized transcriptomic matrices",
+        "clinical/treatment context"
+      ],
+      "available_data": "GEO supplementary processed count and normalized expression files. Whole-exome sequencing data are in controlled-access dbGaP phs003002; do not assume raw WES is openly downloadable.",
+      "limitations": [
+        "Immunotherapy context differs from cytotoxic chemotherapy organoid assays",
+        "91 GEO samples are not 91 independent patients",
+        "Some assay components and microscopy data are not publicly available",
+        "Do not infer clinical benefit or causal immune mechanisms from transcriptomic associations"
+      ],
+      "source_url": "https://www.ncbi.nlm.nih.gov/geo/query/acc.cgi?acc=GSE197613",
+      "geo_sample_composition": "91 GEO samples across immune/tumor-related transcriptomic assays; exact patient, tissue, and assay grouping requires SOFT/MINiML audit",
+      "geo_response_endpoint": "immune/tumor transcriptomic changes; clinical outcome linkage requires separate endpoint and sample mapping",
+      "sample_metadata_audit": "series-level GEO record and linked Cancer Cell publication checked; full sample-level grouping pending",
+      "model_eligibility": "separate immunotherapy/TME analysis; not pooled with cytotoxic organoid pharmacotyping"
+    },
+    {
+      "accession": "GSE205013",
+      "title": "Effects of Chemotherapy on Human Pancreatic Adenocarcinoma and its Tumor Microenvironment",
+      "role": "independent patient-tissue tumor-microenvironment context dataset",
+      "organism": "Homo sapiens",
+      "public_status": "Public GEO series",
+      "sample_count_reported": 27,
+      "design": "Single-cell RNA-seq of primary and liver-metastatic human PDAC samples, including samples collected before and after chemotherapy. GEO notes the supplementary 'RAW' archive contains filtered CellRanger outputs rather than unprocessed raw reads.",
+      "data_types": [
+        "single-cell RNA-seq filtered count matrices",
+        "sample-level clinical/treatment metadata"
+      ],
+      "available_data": "GEO supplementary GSE205013_RAW.tar (approximately 2.0 GB; MTX/TSV) and SRA raw data; inspect GEO sample metadata and publication supplements for patient pairing, biopsy site, treatment regimen, and timepoint.",
+      "limitations": [
+        "27 samples are not 27 independent patients; patient-level mapping must be verified",
+        "Primary and liver-metastatic samples are distinct tissue contexts",
+        "Pre/post-chemotherapy labels do not by themselves provide a standardized drug-response endpoint",
+        "Filtered CellRanger matrices are not raw FASTQ reads",
+        "Do not combine with organoid drug-response measurements as a common endpoint"
+      ],
+      "source_url": "https://www.ncbi.nlm.nih.gov/geo/query/acc.cgi?acc=GSE205013",
+      "geo_sample_composition": "27 single-cell samples, primary and liver-metastatic PDAC; some pre-treatment and some post-chemotherapy",
+      "geo_response_endpoint": "cell-state and composition profiles; not a standardized organoid drug-response curve",
+      "sample_metadata_audit": "series-level GEO record and linked Nature Communications paper checked; patient/timepoint pairing pending",
+      "model_eligibility": "microenvironment and cell-state analysis only after patient/timepoint/biopsy mapping; keep separate from organoid response calibration"
+    },
+    {
+      "accession": "GSE235548",
+      "title": "Uncovering the hidden threat: single-organoid analysis reveals clinically relevant treatment-resistant and invasive subclones in pancreatic cancer",
+      "role": "primary organoid response and heterogeneity dataset",
+      "organism": "Homo sapiens",
+      "public_status": "Public GEO series",
+      "sample_count_reported": 30,
+      "design": "PDAC patient-derived organoid panel (8 organoid lines); baseline samples and a subset exposed to gemcitabine plus paclitaxel; study includes single-organoid response and invasive/resistant subclone analysis.",
+      "data_types": [
+        "bulk RNA-seq",
+        "organoid treatment-response measurements",
+        "single-organoid image-analysis-derived response metrics"
+      ],
+      "available_data": "GEO supplementary processed files and SRA raw sequencing data; inspect sample-level metadata before assigning groups.",
+      "limitations": [
+        "Small number of patient-derived organoid lines",
+        "Treated samples are a subset of the panel",
+        "Expression data alone do not encode a calibrated dose-response curve",
+        "Do not treat organoid response as patient treatment advice"
+      ],
+      "source_url": "https://www.ncbi.nlm.nih.gov/geo/query/acc.cgi?acc=GSE235548",
+      "sample_metadata_url": "https://www.ncbi.nlm.nih.gov/geo/query/acc.cgi?acc=GSM7505081",
+      "geo_sample_composition": "23 baseline organoid RNA-seq samples and 7 Gemcitabine+Paclitaxel-treated samples; 8 patient-derived organoid lines overall. Verify all GSM-to-line and replicate mappings from SOFT/MINiML before analysis.",
+      "geo_response_endpoint": "No complete longitudinal growth/dose-response matrix is established by the GEO series record. GEO provides processed RNA-seq count files; the study reports live-cell image-derived response metrics and retrospective clinical comparison that must be extracted from the publication supplements with sample linkage.",
+      "sample_metadata_audit": "series-level search result and representative GSM metadata checked; full 30-sample mapping pending",
+      "model_eligibility": "candidate for response-heterogeneity analysis only after publication response tables and GSM mappings are extracted; do not train a transcriptome predictor on 8 lines"
     },
     {
       "accession": "GSE297770",
