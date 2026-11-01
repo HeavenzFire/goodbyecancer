@@ -25,7 +25,7 @@ DEFAULT_SERIES = (
     "GSE297770",
 )
 GEO_SERIES = re.compile(r"^GSE(\d+)$")
-SAMPLE_START = re.compile(r"^SAMPLE = (GSM\d+)$")
+SAMPLE_START = re.compile(r"^\^SAMPLE = (GSM\d+)$")
 FIELDS = {
     "!Sample_title": "title",
     "!Sample_source_name_ch1": "source_name",
