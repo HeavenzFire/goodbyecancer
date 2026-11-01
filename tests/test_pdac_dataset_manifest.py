@@ -15,7 +15,7 @@ def test_pdac_dataset_manifest_is_valid_and_traceable():
     accessions = [dataset["accession"] for dataset in datasets]
 
     assert len(accessions) == len(set(accessions))
-    assert {"GSE235548", "GSE169321", "GSE186960", "GSE297770"}.issubset(accessions)
+    assert {"GSE235548", "GSE169321", "GSE186960", "GSE197613", "GSE205013", "GSE297770"}.issubset(accessions)
 
     for dataset in datasets:
         assert dataset["title"]
@@ -41,6 +41,15 @@ def test_expression_series_are_not_mislabeled_as_response_assays():
 
     assert datasets["GSE186960"]["sample_count_reported"] == 6
     assert "exclude from patient-derived organoid calibration" in datasets["GSE186960"]["model_eligibility"]
+
+
+def test_microenvironment_datasets_remain_separate_from_organoid_response():
+    datasets = {d["accession"]: d for d in load_manifest()["datasets"]}
+
+    assert datasets["GSE205013"]["sample_count_reported"] == 27
+    assert "not a standardized organoid drug-response curve" in datasets["GSE205013"]["geo_response_endpoint"]
+    assert "not pooled with cytotoxic organoid pharmacotyping" in datasets["GSE197613"]["model_eligibility"]
+    assert datasets["GSE197613"]["sample_count_reported"] == 91
 
 
 def test_response_cohort_requires_publication_phenotype_linkage():
