@@ -34,7 +34,7 @@ The existing logistic ODE and RK4 implementation is a numerical-methods baseline
 
 ### Phase 1 — data provenance and sample manifest
 
-1. Retrieve GEO SOFT/MINiML metadata and supplementary files for GSE235548 and GSE169321.
+1. Run `python scripts/audit_geo_series.py --series GSE235548 GSE169321 GSE205013 GSE197613 GSE297770` to retrieve GEO family SOFT metadata and produce checksummed sample-level CSV manifests. This downloads metadata only, not sequencing reads.
 2. Retrieve the publication supplements containing image-derived response metrics / organoid drug sensitivity.
 3. Build one row per measurement, not merely one row per RNA-seq sample. Include GSM, organoid line, patient-level group ID (pseudonymized), treatment, drug, dose, exposure duration, assay type, replicate, endpoint, unit, source file, source row, retrieval date, and SHA-256.
 4. Preserve raw source files; derive versioned analysis tables.
