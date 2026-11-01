@@ -1,0 +1,4 @@
+/data/cache/
+/data/manifests/
+/__pycache__/
+*.py[cod]
