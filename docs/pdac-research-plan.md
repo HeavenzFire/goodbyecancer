@@ -73,6 +73,10 @@ where `S` and `R` are operationally defined sensitive and resistant in-vitro sub
 - No pooling cell-line, organoid, tissue, and patient outcomes as if they were interchangeable.
 - No fitting until response labels, units, sample mappings, and assay conditions are verified.
 
+## Parallel microenvironment workstream
+
+After the primary organoid phenotype manifest is established, build a separate sample manifest for GSE205013 and GSE197613. Preserve patient ID grouping, primary versus metastatic biopsy site, pre/post treatment, therapy class, assay type, and sample/cell counts. For GSE205013, QC filtered single-cell matrices and quantify epithelial, CAF, myeloid, and T-cell state composition with sensitivity to annotation choices. For GSE197613, analyze immune-cell-enriched transcriptomic changes in the GVAX ± nivolumab context. Do not combine their outcomes with organoid growth-rate or drug-response labels. These data can inform a later TME-aware model, but cannot validate an organoid-only model's clinical efficacy.
+
 ## Immediate next executable task
 
 Recover the publication supplement phenotype tables for GSE235548 and GSE169321, create a checksummed sample/measurement manifest, and independently validate every mapping against the GEO SOFT/MINiML records. Then decide whether the available independent organoid count supports a statistical response analysis; do not start model training prematurely.
