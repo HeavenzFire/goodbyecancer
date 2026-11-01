@@ -26,7 +26,11 @@
         "Do not treat organoid response as patient treatment advice"
       ],
       "source_url": "https://www.ncbi.nlm.nih.gov/geo/query/acc.cgi?acc=GSE235548",
-      "sample_metadata_url": "https://www.ncbi.nlm.nih.gov/geo/query/acc.cgi?acc=GSM7505081"
+      "sample_metadata_url": "https://www.ncbi.nlm.nih.gov/geo/query/acc.cgi?acc=GSM7505081",
+      "geo_sample_composition": "23 baseline organoid RNA-seq samples and 7 Gemcitabine+Paclitaxel-treated samples; 8 patient-derived organoid lines overall. Verify all GSM-to-line and replicate mappings from SOFT/MINiML before analysis.",
+      "geo_response_endpoint": "No complete longitudinal growth/dose-response matrix is established by the GEO series record. GEO provides processed RNA-seq count files; the study reports live-cell image-derived response metrics and retrospective clinical comparison that must be extracted from the publication supplements with sample linkage.",
+      "sample_metadata_audit": "series-level search result and representative GSM metadata checked; full 30-sample mapping pending",
+      "model_eligibility": "candidate for response-heterogeneity analysis only after publication response tables and GSM mappings are extracted; do not train a transcriptome predictor on 8 lines"
     },
     {
       "accession": "GSE169321",
@@ -48,7 +52,11 @@
         "Drug-sensitivity phenotype tables must be acquired and linked by verified sample identifiers",
         "Avoid leakage between matched tissue/organoid samples"
       ],
-      "source_url": "https://www.ncbi.nlm.nih.gov/geo/query/acc.cgi?acc=GSE169321"
+      "source_url": "https://www.ncbi.nlm.nih.gov/geo/query/acc.cgi?acc=GSE169321",
+      "geo_sample_composition": "10 matched primary-tissue/organoid pairs: 5 treatment-naive and 5 after eight cycles of neoadjuvant FOLFIRINOX; 20 transcriptomic samples.",
+      "geo_response_endpoint": "GEO provides TPM and raw-count matrices, not the drug-sensitivity assay table. The paper describes organoid sensitivity assays to 5-FU, irinotecan and oxaliplatin; retrieve exact phenotype values and sample mapping from paper supplements before modeling.",
+      "sample_metadata_audit": "series-level GEO record and linked publication checked; sample-level pairing and assay table linkage pending",
+      "model_eligibility": "independent treatment-context transcriptome cohort; not a standalone supervised drug-response dataset until phenotype table is recovered"
     },
     {
       "accession": "GSE186960",
@@ -65,24 +73,36 @@
         "Single cell line; not a patient cohort",
         "Use for resistance-mechanism stress testing only, not population-level calibration"
       ],
-      "source_url": "https://www.ncbi.nlm.nih.gov/geo/query/acc.cgi?acc=GSE186960"
+      "source_url": "https://www.ncbi.nlm.nih.gov/geo/query/acc.cgi?acc=GSE186960",
+      "sample_count_reported": 6,
+      "geo_sample_composition": "6 samples: PANC-1 control, 24-hour gemcitabine exposure, and PANC-1 gemcitabine-resistant derivative with three perturbation conditions (amlodipine, BAPTA-AM, W-7).",
+      "geo_response_endpoint": "single-cell transcriptomic profiles; not a patient-derived organoid drug-response cohort",
+      "sample_metadata_audit": "series-level GEO metadata checked",
+      "model_eligibility": "mechanistic resistance stress-test only; exclude from patient-derived organoid calibration"
     },
     {
       "accession": "GSE297770",
       "title": "Establishing 3D Organoid Models from Patient-Derived Conditionally Reprogrammed Cells to Bridge Preclinical and Clinical Insights in Pancreatic Cancer",
-      "role": "candidate independent organoid validation dataset",
+      "role": "candidate independent organoid transcriptome context; not currently a response-labeled GEO cohort",
       "organism": "Homo sapiens",
       "public_status": "Public GEO series",
-      "design": "3D patient-derived pancreatic cancer organoid models with gemcitabine plus nab-paclitaxel and FOLFIRINOX response assays.",
+      "design": "GEO series contains five control RNA-seq samples from patient-derived 3D organoids (YCLO-1, YCLO-2, YCLO-4, YCLO-6, YCLO-7). The associated publication reports drug-sensitivity experiments, but the GEO series record lists only control RNA-seq samples.",
       "data_types": [
-        "RNA-seq",
-        "organoid drug-sensitivity assays"
+        "RNA-seq"
       ],
       "limitations": [
-        "Detailed sample/phenotype mapping has not yet been audited",
-        "Do not include in calibration until raw metadata and outcome tables are verified"
+        "Only five control RNA-seq samples in GEO",
+        "No treatment-arm RNA-seq samples are listed in the GEO series record",
+        "Do not treat GEO as containing drug-response labels",
+        "Drug-response claims belong to the publication and need separately sourced data"
       ],
-      "source_url": "https://www.ncbi.nlm.nih.gov/geo/query/acc.cgi?acc=GSE297770"
+      "source_url": "https://www.ncbi.nlm.nih.gov/geo/query/acc.cgi?acc=GSE297770",
+      "sample_count_reported": 5,
+      "available_data": "GEO raw count files and SRA raw data; study drug-sensitivity/clinical comparison tables require retrieval from publication supplements or authors and verified linkage.",
+      "geo_sample_composition": "5 control organoid RNA-seq samples",
+      "geo_response_endpoint": "not present in the GEO series sample design",
+      "sample_metadata_audit": "series-level GEO metadata and associated publication data-availability statement checked",
+      "model_eligibility": "transcriptomic context only until supplementary phenotype data and linkage are obtained"
     },
     {
       "accession": "phs001611.v1.p1",
@@ -103,7 +123,11 @@
         "Use only under applicable data-access approvals"
       ],
       "source_url": "https://www.ega-archive.org/studies/phs001611",
-      "open_data_catalog": "https://registry.opendata.aws/organoid-pancreatic/"
+      "open_data_catalog": "https://registry.opendata.aws/organoid-pancreatic/",
+      "geo_sample_composition": "not yet verified",
+      "geo_response_endpoint": "not yet verified",
+      "sample_metadata_audit": "not audited",
+      "model_eligibility": "not eligible for calibration until sample metadata and response endpoint are verified"
     }
   ],
   "reproducibility_requirements": [
