@@ -1,0 +1,28 @@
+name: Simulation verification
+
+on:
+  push:
+    branches: ["main", "feat/first-verified-simulation"]
+  pull_request:
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  unit-tests:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - name: Run standard-library tests
+        run: python -m unittest discover -s tests -v
+      - name: Run deterministic smoke simulation
+        run: python -m src.simulate --duration 10 --dt 0.1 --output results/ci-smoke.json
+      - name: Upload run record
+        uses: actions/upload-artifact@v4
+        with:
+          name: simulation-smoke-record
+          path: results/ci-smoke.json
