@@ -41,7 +41,7 @@ def family_soft_url(accession: str) -> str:
     if not match:
         raise ValueError(f"invalid GEO series accession: {accession}")
     digits = match.group(1)
-    bucket = digits[:-3] + "nnn"
+    bucket = "GSE" + digits[:-3] + "nnn"
     return (
         "https://ftp.ncbi.nlm.nih.gov/geo/series/"
         f"{bucket}/{accession}/soft/{accession}_family.soft.gz"
