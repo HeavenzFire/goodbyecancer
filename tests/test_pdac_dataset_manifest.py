@@ -40,7 +40,7 @@ def test_expression_series_are_not_mislabeled_as_response_assays():
     assert "No treatment-arm RNA-seq samples" in datasets["GSE297770"]["limitations"]
 
     assert datasets["GSE186960"]["sample_count_reported"] == 6
-    assert "not a patient-derived organoid" in datasets["GSE186960"]["model_eligibility"]
+    assert "exclude from patient-derived organoid calibration" in datasets["GSE186960"]["model_eligibility"]
 
 
 def test_response_cohort_requires_publication_phenotype_linkage():
@@ -48,4 +48,4 @@ def test_response_cohort_requires_publication_phenotype_linkage():
 
     assert datasets["GSE235548"]["sample_count_reported"] == 30
     assert "publication response tables" in datasets["GSE235548"]["model_eligibility"]
-    assert "not a complete longitudinal response matrix" in datasets["GSE235548"]["geo_response_endpoint"]
+    assert "No complete longitudinal growth/dose-response matrix" in datasets["GSE235548"]["geo_response_endpoint"]
