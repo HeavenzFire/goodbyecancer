@@ -46,3 +46,7 @@ Each run records model name, parameters, time step, simulated duration, final si
 ## Research integrity
 
 A passing test means the stated software properties passed. It does not mean the model predicts real cancer outcomes. Every future model must state its biological scope, evidence source, validation target, known failure modes, and intended use.
+
+## Pancreatic cancer research track
+
+The current disease-specific research target is pancreatic ductal adenocarcinoma (PDAC). The public dataset inventory is maintained in [`data/pdac_datasets.json`](data/pdac_datasets.json), and the evidence-first modeling and validation gates are documented in [`docs/pdac-research-plan.md`](docs/pdac-research-plan.md). Dataset registration is not the same as data ingestion or biological validation: the existing logistic ODE remains a numerical verification baseline until sample-level treatment metadata and response endpoints are audited.
