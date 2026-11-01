@@ -1,0 +1,116 @@
+{
+  "schema_version": "1.0",
+  "project": "GoodbyeCancer",
+  "target_disease": "pancreatic ductal adenocarcinoma (PDAC)",
+  "intended_use": "preclinical computational research only; not diagnostic or treatment guidance",
+  "dataset_selection_policy": "Prefer public human PDAC organoid or cell-model data with explicit treatment labels, stable accession identifiers, and downloadable processed data. Do not infer treatment outcomes from expression data alone.",
+  "datasets": [
+    {
+      "accession": "GSE235548",
+      "title": "Uncovering the hidden threat: single-organoid analysis reveals clinically relevant treatment-resistant and invasive subclones in pancreatic cancer",
+      "role": "primary organoid response and heterogeneity dataset",
+      "organism": "Homo sapiens",
+      "public_status": "Public GEO series",
+      "sample_count_reported": 30,
+      "design": "PDAC patient-derived organoid panel (8 organoid lines); baseline samples and a subset exposed to gemcitabine plus paclitaxel; study includes single-organoid response and invasive/resistant subclone analysis.",
+      "data_types": [
+        "bulk RNA-seq",
+        "organoid treatment-response measurements",
+        "single-organoid image-analysis-derived response metrics"
+      ],
+      "available_data": "GEO supplementary processed files and SRA raw sequencing data; inspect sample-level metadata before assigning groups.",
+      "limitations": [
+        "Small number of patient-derived organoid lines",
+        "Treated samples are a subset of the panel",
+        "Expression data alone do not encode a calibrated dose-response curve",
+        "Do not treat organoid response as patient treatment advice"
+      ],
+      "source_url": "https://www.ncbi.nlm.nih.gov/geo/query/acc.cgi?acc=GSE235548",
+      "sample_metadata_url": "https://www.ncbi.nlm.nih.gov/geo/query/acc.cgi?acc=GSM7505081"
+    },
+    {
+      "accession": "GSE169321",
+      "title": "Patient-derived organoids after neoadjuvant FOLFIRINOX predict therapy resistance in pancreatic ductal adenocarcinoma",
+      "role": "independent organoid and treatment-context dataset",
+      "organism": "Homo sapiens",
+      "public_status": "Public GEO series",
+      "sample_count_reported": 20,
+      "design": "Ten PDAC organoid lines from treatment-naive and neoadjuvant-FOLFIRINOX-treated patients, with matched primary tissue/organoid transcriptomic samples; drug-sensitivity assays include 5-FU, irinotecan, and oxaliplatin.",
+      "data_types": [
+        "RNA-seq TPM matrix",
+        "RNA-seq raw-count matrix",
+        "organoid drug-sensitivity assay results described by the study"
+      ],
+      "available_data": "GEO supplementary CSV files; phenotype tables and sample mappings must be independently checked against the publication supplements.",
+      "limitations": [
+        "Small cohort",
+        "Neoadjuvant exposure is not equivalent to prospective response prediction",
+        "Drug-sensitivity phenotype tables must be acquired and linked by verified sample identifiers",
+        "Avoid leakage between matched tissue/organoid samples"
+      ],
+      "source_url": "https://www.ncbi.nlm.nih.gov/geo/query/acc.cgi?acc=GSE169321"
+    },
+    {
+      "accession": "GSE186960",
+      "title": "Profiling the Panc1 pancreatic cancer cell line following Gemcitabine treatment using single cell RNA sequencing",
+      "role": "mechanistic resistance stress-test dataset",
+      "organism": "Homo sapiens",
+      "public_status": "Public GEO series",
+      "design": "PANC-1 in-vitro gemcitabine exposure and acquired-resistance model, including single-cell RNA-seq comparisons.",
+      "data_types": [
+        "single-cell RNA-seq",
+        "gemcitabine-resistance model metadata"
+      ],
+      "limitations": [
+        "Single cell line; not a patient cohort",
+        "Use for resistance-mechanism stress testing only, not population-level calibration"
+      ],
+      "source_url": "https://www.ncbi.nlm.nih.gov/geo/query/acc.cgi?acc=GSE186960"
+    },
+    {
+      "accession": "GSE297770",
+      "title": "Establishing 3D Organoid Models from Patient-Derived Conditionally Reprogrammed Cells to Bridge Preclinical and Clinical Insights in Pancreatic Cancer",
+      "role": "candidate independent organoid validation dataset",
+      "organism": "Homo sapiens",
+      "public_status": "Public GEO series",
+      "design": "3D patient-derived pancreatic cancer organoid models with gemcitabine plus nab-paclitaxel and FOLFIRINOX response assays.",
+      "data_types": [
+        "RNA-seq",
+        "organoid drug-sensitivity assays"
+      ],
+      "limitations": [
+        "Detailed sample/phenotype mapping has not yet been audited",
+        "Do not include in calibration until raw metadata and outcome tables are verified"
+      ],
+      "source_url": "https://www.ncbi.nlm.nih.gov/geo/query/acc.cgi?acc=GSE297770"
+    },
+    {
+      "accession": "phs001611.v1.p1",
+      "title": "Organoid Profiling Identifies Common Responders to Chemotherapy in Pancreatic Cancer",
+      "role": "high-value external cohort; access-controlled components",
+      "organism": "Homo sapiens",
+      "public_status": "dbGaP study; access requirements vary by data type",
+      "design": "Published study profiled 66 PDAC-confirmed patient-derived organoids against gemcitabine, paclitaxel, SN-38, 5-FU, and oxaliplatin, with retrospective patient follow-up for a small matched subset.",
+      "data_types": [
+        "organoid dose-response/AUC",
+        "transcriptomics",
+        "matched clinical follow-up"
+      ],
+      "limitations": [
+        "Some data are controlled access",
+        "Only a small matched patient subset",
+        "Retrospective association is not proof of treatment benefit",
+        "Use only under applicable data-access approvals"
+      ],
+      "source_url": "https://www.ega-archive.org/studies/phs001611",
+      "open_data_catalog": "https://registry.opendata.aws/organoid-pancreatic/"
+    }
+  ],
+  "reproducibility_requirements": [
+    "Record accession, sample accession, file name, retrieval date, source URL, byte size, and SHA-256 for every downloaded file.",
+    "Preserve raw source files; perform preprocessing into versioned derived files.",
+    "Build an explicit sample-to-organoid-to-treatment mapping and reject ambiguous mappings.",
+    "Keep patient-level grouping intact during train/validation splits.",
+    "Never mix cell-line, organoid, and patient-cohort observations without explicit domain labels."
+  ]
+}
