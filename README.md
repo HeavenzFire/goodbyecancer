@@ -28,7 +28,6 @@ The prototype integrates with classical fourth-order Runge–Kutta (RK4), then c
 ```bash
 python -m unittest discover -s tests -v
 python -m src.simulate --duration 10 --dt 0.1 --output results/run.json
-python -m unittest tests.test_audit_geo_series -v
 ```
 
 No third-party packages or network access are required.
