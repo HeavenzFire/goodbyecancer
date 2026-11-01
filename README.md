@@ -28,6 +28,7 @@ The prototype integrates with classical fourth-order Runge–Kutta (RK4), then c
 ```bash
 python -m unittest discover -s tests -v
 python -m src.simulate --duration 10 --dt 0.1 --output results/run.json
+python -m unittest tests.test_audit_geo_series -v
 ```
 
 No third-party packages or network access are required.
@@ -49,4 +50,4 @@ A passing test means the stated software properties passed. It does not mean the
 
 ## Pancreatic cancer research track
 
-The current disease-specific research target is pancreatic ductal adenocarcinoma (PDAC). The public dataset inventory is maintained in [`data/pdac_datasets.json`](data/pdac_datasets.json), the evidence-first modeling and validation gates are documented in [`docs/pdac-research-plan.md`](docs/pdac-research-plan.md), and the peer-reviewed evidence synthesis is in [`docs/research/PDAC-consensus-literature-review-2026-11.md`](docs/research/PDAC-consensus-literature-review-2026-11.md). Dataset registration is not the same as data ingestion or biological validation: the existing logistic ODE remains a numerical verification baseline until sample-level treatment metadata and response endpoints are audited.
+The current disease-specific research target is pancreatic ductal adenocarcinoma (PDAC). The public dataset inventory is maintained in [`data/pdac_datasets.json`](data/pdac_datasets.json), the evidence-first modeling and validation gates are documented in [`docs/pdac-research-plan.md`](docs/pdac-research-plan.md), and the peer-reviewed evidence synthesis is in [`docs/research/PDAC-consensus-literature-review-2026-11.md`](docs/research/PDAC-consensus-literature-review-2026-11.md). To retrieve only GEO family SOFT sample metadata (not sequencing reads) and write checksummed sample manifests, run `python scripts/audit_geo_series.py --series GSE235548 GSE169321 GSE205013 GSE197613 GSE297770`. Generated caches and manifests are local artifacts and are not committed. Dataset registration is not the same as data ingestion or biological validation: the existing logistic ODE remains a numerical verification baseline until sample-level treatment metadata and response endpoints are audited.
